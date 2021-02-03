@@ -25,4 +25,14 @@ def test_coordinate_invalid_row_raises_InvalidRowException(row):
 def test_coordinate_invalid_col_raises_InvalidColumnException(col):
     with pytest.raises(InvalidColumnError):
         Coordinate(0, col)
+
+def test_row_returns_value_0():
+    coordinate = Coordinate(0, 1)
+
+    assert coordinate.row == coordinate[0]
+    
+def test_col_returns_value_1():
+    coordinate = Coordinate(0, 1)
+
+    assert coordinate.col == coordinate[1]
     
