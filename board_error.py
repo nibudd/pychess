@@ -1,7 +1,9 @@
 from coordinate import Coordinate
 
+
 class BoardError(Exception):
     pass
+
 
 class EmptySquareError(BoardError):
     def __init__(self, coordinate: Coordinate):

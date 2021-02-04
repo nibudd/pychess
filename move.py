@@ -1,6 +1,7 @@
 from coordinate import Coordinate
 
-class PieceMove(tuple):
+
+class Move(tuple):
     def __new__(cls, origin: Coordinate, target: Coordinate):
         return tuple.__new__(cls, (origin, target))
 

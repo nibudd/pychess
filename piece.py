@@ -1,6 +1,7 @@
 from piece_type import PieceType
 from piece_colour import PieceColour
 
+
 class Piece:
     def __init__(self, type: PieceType, colour: PieceColour):
         self._type = type

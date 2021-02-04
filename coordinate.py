@@ -1,5 +1,6 @@
 from coordinate_error import InvalidRowError, InvalidColumnError
 
+
 class Coordinate(tuple):
     def __new__(cls, row: int, col: int):
         _validate_coordinate(row, col)
@@ -12,7 +13,7 @@ class Coordinate(tuple):
     @property
     def col(self) -> int:
         return self[1]
-        
+
 
 def _validate_coordinate(row: int, col: int):
     if not _is_valid_coordinate_value(row):
