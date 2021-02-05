@@ -15,6 +15,12 @@ class Coordinate(tuple):
         return self[1]
 
 
+    def __add__(self, x: tuple):
+        new_row = self.row + x[0]
+        new_col = self.col + x[1]
+        return Coordinate(new_row, new_col)
+
+
 def _validate_coordinate(row: int, col: int):
     if not _is_valid_coordinate_value(row):
         raise InvalidRowError(row)

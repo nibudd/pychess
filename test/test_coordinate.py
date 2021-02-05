@@ -72,19 +72,19 @@ from coordinate_error import InvalidRowError, InvalidColumnError
         (7, 7),
     ],
 )
-def test_coordinate_valid_coordinates_returns_object(row, col):
+def test_coordinate_valid_coordinates_returns_object(row: int, col: int):
     coordinate = Coordinate(row, col)
     assert type(coordinate) == Coordinate
 
 
 @pytest.mark.parametrize("row", [-10, -1, 8, 20])
-def test_coordinate_invalid_row_raises_InvalidRowException(row):
+def test_coordinate_invalid_row_raises_InvalidRowException(row: int):
     with pytest.raises(InvalidRowError):
         Coordinate(row, 0)
 
 
 @pytest.mark.parametrize("col", [-10, -1, 8, 20])
-def test_coordinate_invalid_col_raises_InvalidColumnException(col):
+def test_coordinate_invalid_col_raises_InvalidColumnException(col: int):
     with pytest.raises(InvalidColumnError):
         Coordinate(0, col)
 
@@ -99,3 +99,30 @@ def test_col_returns_value_1():
     coordinate = Coordinate(0, 1)
 
     assert coordinate.col == coordinate[1]
+
+@pytest.mark.parametrize("row_add, col_add", [
+    (0, 0),
+    (-1, 0),
+    (-4, 0),
+    (1, 0),
+    (3, 0),
+    (0, -1),
+    (0, -5),
+    (0, 1),
+    (0, 2),
+])
+def test_add(row_add: int, col_add: int):
+    row = 4
+    col = 5
+    coordinate = Coordinate(row, col)
+
+    sut = coordinate + (row_add, col_add)
+
+    assert _coordinate_equals_tuple(sut, (row + row_add, col + col_add))
+
+
+def _coordinate_equals_tuple(coordinate: Coordinate, x: tuple) -> bool:
+    if coordinate.row == x[0] and coordinate.col == x[1]:
+        return True
+
+    return False
